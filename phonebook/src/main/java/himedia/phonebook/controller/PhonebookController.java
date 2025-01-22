@@ -80,9 +80,8 @@ public class PhonebookController {
 	
 	//게시물 삭제 
 	@GetMapping("/delete/{id}")
-	public String deleteAction(@PathVariable("id") Integer id) {
-		logger.debug("PHONEBOOK DELETE:" + id);
-		phonebookServiceImpl.deletePhonebook(id);
+	public String deleteAction(@PathVariable("vo") Integer vo) {
+		logger.debug("PHONEBOOK DELETE:" + vo);
 		return "redirect:/";
 	}
 }
