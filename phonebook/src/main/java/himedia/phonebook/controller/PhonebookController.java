@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import himedia.phonebook.repository.vo.PhonebookVo;
 import himedia.phonebook.service.PhonebookService;
@@ -38,10 +40,41 @@ public class PhonebookController {
 		return "phonebook/writeForm";
 	}
 	
+	@PostMapping("/write")
+	public String writeAction(
+			@ModelAttribute PhonebookVo phonebookVo) {
+		logger.debug("PHONEBOOK WRITEL " + phonebookVo);
+		boolean success = phonebookServiceImpl.insertPhonebook(phonebookVo);
+		
+		if (success) {
+			return "redirect:/";
+		} else {
+			return "redirect:/write";
+		}
+	}
+	
 	//	게시물 수정 폼
 	@GetMapping("/modify/{id}")
 	public String modifyForm(
-			@PathVariable("id") Integer id) {
+			@PathVariable("id") Integer id,
+			Model model) {
+		//	기존 게시물 가져오기
+		PhonebookVo phonebookVo = phonebookServiceImpl.selectPhonebook(id);
+		model.addAttribute("vo", phonebookVo);
 		return "phonebook/modifyForm";
+	}
+	
+	//	게시물 수정
+	@PostMapping("/modify")
+	public String modifyAction(
+			@ModelAttribute PhonebookVo phonebookVo) {
+		logger.debug("PHONEBOOK MODIFY:" + phonebookVo);
+		boolean success = phonebookServiceImpl.updatePhonebook(phonebookVo);
+		
+		if (success) {
+			return "redirect:/";
+		} else {
+			return "redirect:/modify/" + phonebookVo.getId();
+		}
 	}
 }

@@ -15,14 +15,12 @@ public class PhonebookServiceImpl implements PhonebookService {
 	
 	@Override
 	public boolean insertPhonebook(PhonebookVo phonebookVo) {
-		// TODO Auto-generated method stub
-		return false;
+		return 1 == phonebookDaoImpl.insert(phonebookVo);
 	}
 
 	@Override
 	public boolean updatePhonebook(PhonebookVo phonebookVo) {
-		// TODO Auto-generated method stub
-		return false;
+		return 1 == phonebookDaoImpl.update(phonebookVo);
 	}
 
 	@Override
@@ -33,8 +31,7 @@ public class PhonebookServiceImpl implements PhonebookService {
 
 	@Override
 	public PhonebookVo selectPhonebook(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return phonebookDaoImpl.selectOne(id);
 	}
 
 	@Override

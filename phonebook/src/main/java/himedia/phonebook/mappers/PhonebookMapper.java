@@ -11,4 +11,10 @@ import himedia.phonebook.repository.vo.PhonebookVo;
 public interface PhonebookMapper {
 	List<PhonebookVo> selectAll();
 
+	int insert(PhonebookVo phonebookVo);
+	
+//	@Select("SELECT * FROM phonebook WHERE id=#{id}") phonebook.xml의 Mapper를 없애는 대신 이렇게 써도 됨
+	PhonebookVo selectOne(Integer id);
+	
+	int update(PhonebookVo phonebookVo);
 }

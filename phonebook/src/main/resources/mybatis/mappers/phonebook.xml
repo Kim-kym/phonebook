@@ -5,5 +5,23 @@
 	<select id="selectAll" resultType="phonebookVo">
 	SELECT * FROM phonebook ORDER BY id
 	</select>
+	
+	<insert id="insert" parameterType="phonebookVo">
+	INSERT INTO phonebook (name, hp, tel)
+	VALUES(#{name}, #{hp}, #{tel})
+	</insert>
+	
+	<select id="selectOne"
+		parameterType="int"
+		resultType="phonebookVo">
+	SELECT * FROM phonebook WHERE id=#{id}
+	</select>
+	
+	<update id="update"
+		parameterType="phonebookVo">
+		UPDATE phonebook SET 
+		name=#{name}, hp=#{hp}, tel=#{tel}
+		WHERE id=#{id}
+		</update>
 
 </mapper>
