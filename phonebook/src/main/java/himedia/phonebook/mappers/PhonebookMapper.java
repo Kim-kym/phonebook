@@ -17,4 +17,6 @@ public interface PhonebookMapper {
 	PhonebookVo selectOne(Integer id);
 	
 	int update(PhonebookVo phonebookVo);
+	
+	int delete(Integer id);
 }

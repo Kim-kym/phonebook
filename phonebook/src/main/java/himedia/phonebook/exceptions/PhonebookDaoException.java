@@ -8,7 +8,12 @@ import lombok.Setter;
 @Setter
 public class PhonebookDaoException extends RuntimeException {
 	private PhonebookVo phonebookvo = null;
-
+	
+	public PhonebookDaoException(String message,
+								Throwable cause) {
+		super(message, cause);
+	}
+	
 	public PhonebookDaoException(String message, 
 								Throwable cause,
 								PhonebookVo vo) {

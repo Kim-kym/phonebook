@@ -25,8 +25,7 @@ public class PhonebookServiceImpl implements PhonebookService {
 
 	@Override
 	public boolean deletePhonebook(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+		return 1 == phonebookDaoImpl.delete(id);
 	}
 
 	@Override
