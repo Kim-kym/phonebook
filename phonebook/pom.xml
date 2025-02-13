@@ -42,11 +42,12 @@
 			<optional>true</optional>
 		</dependency>
 		
-		<!-- dependency>
+		<!-- 톰캣에 배포시 WAS 서브의 의존성 사용 : provided -->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
-		</dependency -->
+		</dependency>
 		
 		<!-- tomcat-embed-jasper: JSP를 서블릿으로 변환하는 모듈 -->
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
@@ -109,6 +110,9 @@
 	</dependencies>
 
 	<build>
+		<!-- 톰캣에 배포시 war 파일의 이름이 
+			Context Path가 됩니다. -->
+		<finalName>phonebook</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
